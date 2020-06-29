@@ -33,9 +33,18 @@ class Activation_RectLin:
     def forward(self, input):
         self.output = np.maximum(0, input)      
 
+# Object designed to execute the Sigmoid Activation function on a neural layers output
+class Activation_Sigmoid:
+    
+    # Executes the Sigmoid Activation Function
+    def forward(self, input):
+        self.output = 1/(1 + np.exp(input))
 
 
-# Demonstration
+
+
+
+# Demonstration of rectified linear
 layer1 = Layer_Dense(2, 5)
 activ_1 = Activation_RectLin()
 layer1.forward(X)
@@ -43,3 +52,9 @@ activ_1.forward(layer1.output)
 print(activ_1.output) 
 
 
+# Demonstration of Sigmoid
+layer2 = Layer_Dense(2, 5)
+activ_2 = Activation_Sigmoid()
+layer2.forward(X)
+activ_2.forward(layer2.output)
+print(activ_2.output)
