@@ -26,6 +26,11 @@ class Layer_Dense:
         
 
 
+
+
+
+#------------Activation Functions----------------------#
+
 # Object desinged to execute the Rectified Linear Activation function on a neural layers output
 class Activation_RectLin:
     
@@ -39,6 +44,13 @@ class Activation_Sigmoid:
     # Executes the Sigmoid Activation Function
     def forward(self, input):
         self.output = 1/(1 + np.exp(input))
+
+# An object that carries out the Hyperbolic Tangent Activation Function on a set of inputs
+class Activation_TanH:
+    
+    # Executes Hyperbolic Tangent activation function
+    def forward(self, input):
+        self.output = (np.exp(input) - np.exp(-input)) / (np.exp(input) + np.exp(-input))
 
 
 
@@ -58,3 +70,11 @@ activ_2 = Activation_Sigmoid()
 layer2.forward(X)
 activ_2.forward(layer2.output)
 print(activ_2.output)
+
+
+# Demonstration of Hyperbolic Tangent
+layer3 = Layer_Dense(2, 5)
+activ_3 = Activation_TanH()
+layer3.forward(X)
+activ_3.forward(layer3.output)
+print(activ_3.output)
